@@ -7,25 +7,13 @@ const jwt = require('jsonwebtoken');
 const Controller = require("../controllers/ContactController")
 const Controllers2 = require("../controllers/Bookcontroller")
 
-//user//
-router.post("/user/signup",Controller.signup)
-router.post("/user/login",Controller.login)
-router.post("/user/logout",Controller.logout)
-//admin//
-router.post("/admin/signup",Controller.Adminsignup)
-router.post("/admin/login",Controller.Adminlogin)
-router.post("/admin/logout",Controller.Adminlogout)
-//admin CRUD opertion on user//
-router.post("/admin/createuser",authorize,Controller.AdminUserSignup)
-router.get("/admin/readuser",authorize,Controller.getUser)
-router.post("/admin/userupdate/:id",authorize,Controller.AdminUserUpdate)
-router.post("/admin/deleteuser/:id",authorize,Controller.AdminDeleteUser)
+
 
 
 
 
 //router.post("/create",Controllers.createUser)
-/*router.post("/signup",async(req,res)=>{
+router.post("/signup",async(req,res)=>{
     const data=req.body
 
     const user=await UserModel.findOne({email:data.email})
@@ -51,13 +39,13 @@ router.post("/admin/deleteuser/:id",authorize,Controller.AdminDeleteUser)
 
         }
     }
-})*/
-/*router.post("/login",async(req,res)=>{
+})
+router.post("/login",async(req,res)=>{
     const data =req.body
     const result=await UserModel.signInStatics(data)
     console.log(result)
     res.send(result)
-})*/
+})
 router.post("/updatepassword",authorize,async (req,res)=>{
     const data=req.body
     try{
@@ -78,15 +66,15 @@ router.post("/updatepassword",authorize,async (req,res)=>{
 
     }
 })
-/*router.post("/adminlogin",async(req,res)=>{
+router.post("/adminlogin",async(req,res)=>{
     const data =req.body
     console.log(data)
     const result=await AdminModel.signInStatics(data)
     console.log(result)
     res.send(result)
-})*/
+})
 
-/*router.post("/admincreateuser",authorize,async(req,res)=>{
+router.post("/admincreateuser",authorize,async(req,res)=>{
     const data=req.body
 
     const user=await UserModel.findOne({email:data.email})
@@ -112,9 +100,9 @@ router.post("/updatepassword",authorize,async (req,res)=>{
 
         }
     }
-})*/
-//router.post("/user/logout",Controller.logout)//
-/*router.post("/admin/updateuser/:id" ,authorize,async (req,res)=>{
+})
+router.post("/user/logout",Controller.logout)
+router.post("/admin/updateuser/:id" ,authorize,async (req,res)=>{
     const data=req.body
     console.log(data)
     try{
@@ -140,14 +128,14 @@ router.post("/updatepassword",authorize,async (req,res)=>{
         res.send("updated err")
 
     }
-})*/
-/*router.post("/admin/deleteUser/:id",authorize,async function(req,res){
+})
+router.post("/admin/deleteUser/:id",authorize,async function(req,res){
     var task=await UserModel.findOneAndDelete({
         _id:req.params.id
     })
     return res.send("User id deleted Successfully");
-})*/
-/*router.post("/adminsignup",async(req,res)=>{
+})
+router.post("/adminsignup",async(req,res)=>{
     const data=req.body
 
     const user2=await AdminModel.findOne({user:data.user})
@@ -170,7 +158,7 @@ router.post("/updatepassword",authorize,async (req,res)=>{
 
         }
     }
-})*/
+})
 
 function authorize (req,res,next){
     try{
